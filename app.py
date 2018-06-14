@@ -93,4 +93,4 @@ def delete_task(product_id):
 
 #command to run the API on the given host and port
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=8080)
+    app.run(debug=True, port=8080)
