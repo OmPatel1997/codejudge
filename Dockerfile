@@ -10,7 +10,7 @@ COPY app.py requirements.txt ./
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 #library installments necessary as given in requirements.txt
 
-EXPOSE 8080
+EXPOSE 5200
 #port that shall be used on the localhost
 
 CMD ["python", "app.py"]

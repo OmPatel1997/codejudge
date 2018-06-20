@@ -1,10 +1,12 @@
 # Note-  Flask has been used for implementing my API as the source code language I know in python
 
-
 import flask
+# Flask is basically in other words is a toolkit for Web Server Gateway Interface (WSGI) applications for python
 import six
+# Six provides simple utilities for wrapping over differences between Python 2 and Python 3.
 from flask import Flask, request, jsonify, redirect, url_for, render_template, abort, make_response
 from flask_restful import Resource, Api
+# Flask_restful is used for designing a RESTful API with Python and Flask.
 from json import dumps
 import os
 
@@ -50,7 +52,7 @@ def not_found(error):
 
 #the GET request mechanism using flask_restful, app route contains the path given on the url, method is GET
 @app.route('/api/products/<int:product_id>', methods=['GET'])
-def get_tasks(product_id):
+def get_tasks(product_id): #function that handles what happens after a GET request
 	#error handling for 404 type errors
 	products = [products for products in prods if products['id'] == product_id]
 	if len(products) == 0:
@@ -59,7 +61,7 @@ def get_tasks(product_id):
 
 #the POST request mechanism using flask_restful, app route contains the path given on the url, method is POST
 @app.route('/api/products', methods=['POST'])
-def create_task():
+def create_task(): #function that handles what happens after a POST request
 	#error handling for 400 type errors
     if not request.json or 'name' not in request.json:
         abort(400)
@@ -68,9 +70,9 @@ def create_task():
     }
     return jsonify({'data': make_public_task(task)}), 201
 
-#the POST request mechanism using flask_restful, app route contains the path given on the url, method is POST
+#the PUT request mechanism using flask_restful, app route contains the path given on the url, method is PUT
 @app.route('/api/products/<int:product_id>', methods=['PUT'])
-def update_task(product_id):
+def update_task(product_id): #function that handles what happens after a PUT request
 	# error handling for 404 and 400 type errors
     prod = [prod for prod in prods if prod['id'] == product_id]
     if len(task) == 0:
@@ -82,7 +84,7 @@ def update_task(product_id):
 
 #the DELETE request mechanism using flask_restful, app route contains the path given on the url, method is DELETE
 @app.route('/api/products/<int:product_id>', methods=['DELETE'])
-def delete_task(product_id):
+def delete_task(product_id): #function that handles what happens after a DELETE request
     prod = [prod for prod in prods if prod['id'] == product_id]
     if len(prod) == 0:
         abort(404)
@@ -93,4 +95,4 @@ def delete_task(product_id):
 
 #command to run the API on the given host and port
 if __name__ == '__main__':
-    app.run(debug=True, port=8080)
+    app.run(host='0.0.0.0', port=5200)
