@@ -20,7 +20,7 @@
 
 Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and ship it all out as one package.
 
-###Installation
+### Installation
 
 Download and install Docker for your own Operating System and boot it. With Docker running, the following execution is to be done on the command line.
 
@@ -53,15 +53,14 @@ $./path/to/the/folder/ docker run -d --rm -p 5200:5200 --name restapi --net myDo
 >-d , -d=true    -> To start a container in detached mode.containers started in detached mode exit when the root process used to run the container exits, unless you also specify next flag.
 
 > --rm -> If you use -d with --rm, the container is removed when it exits or when the daemon exits, whichever happens first.
-
+>
 > -p -> Port specifications
-
+>
 > --name -> Conatiner name
 > 
 > --net -> Network name
 > 
 > --ip -> Allocated ip from subnet specified before.
-> 
 
 Succesful execution of the above commands shall result in successful execution of you API. To access its benefits send relevant requests to the URL and port mentioned in app.py.
 
